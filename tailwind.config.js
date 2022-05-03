@@ -5,7 +5,10 @@ module.exports = {
       colors: {
         brand: {
           500: '#8257e6'
-        }
+        },
+        // whiteColor: {
+        //   500: '#fff'
+        // }
       }
     },
   },
