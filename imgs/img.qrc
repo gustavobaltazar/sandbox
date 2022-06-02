@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>forca.png</file>
+    <file>jogo_da_velha.png</file>
+    <file>gatinhos.jpg</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>530</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>450</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>450</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(134, 186, 255);</string>
+  </property>
+  <widget class="QLabel" name="titulo">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>30</y>
+     <width>201</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 19pt &quot;MS Shell Dlg 2&quot;;
+text-decoration: underline;
+</string>
+   </property>
+   <property name="text">
+    <string>Jogo Joken Po!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_pedra">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>170</y>
+     <width>101</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(127, 127, 127);</string>
+   </property>
+   <property name="text">
+    <string>Pedra</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_papel">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>170</y>
+     <width>101</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(214, 214, 214);</string>
+   </property>
+   <property name="text">
+    <string>Papel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_tesoura">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>170</y>
+     <width>101</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(200, 87, 67);</string>
+   </property>
+   <property name="text">
+    <string>Tesoura</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="resposta">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>280</y>
+     <width>331</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_reset">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>420</y>
+     <width>111</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(143, 150, 158);</string>
+   </property>
+   <property name="text">
+    <string>Resetar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>120</y>
+     <width>281</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_pedra_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>120</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(127, 127, 127);</string>
+   </property>
+   <property name="text">
+    <string>Enter</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
