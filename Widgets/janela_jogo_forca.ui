@@ -64,7 +64,8 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
     </property>
     <property name="text">
      <string>Vida:</string>
@@ -73,9 +74,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>380</y>
-      <width>61</width>
+      <x>510</x>
+      <y>390</y>
+      <width>81</width>
       <height>21</height>
      </rect>
     </property>
@@ -87,56 +88,11 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
     </property>
     <property name="text">
      <string>Tentativas: </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>410</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Rockwell Extra Bold</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
-    </property>
-    <property name="text">
-     <string>Acertos: </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>360</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Rockwell Extra Bold</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -144,8 +100,8 @@
      <rect>
       <x>600</x>
       <y>390</y>
-      <width>47</width>
-      <height>13</height>
+      <width>21</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -156,50 +112,29 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
     </property>
     <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>420</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Rockwell Extra Bold</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#7A484E;</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>0</x>
       <y>130</y>
-      <width>301</width>
+      <width>701</width>
       <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #F4E2DE;
+     <string notr="true">background: transparent;
+font-size: 42px;
 </string>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>DIGITE UMA LETRA</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -222,7 +157,7 @@ border-radius:7px;
 </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_enviar">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -237,6 +172,78 @@ border-radius: 10px;</string>
     </property>
     <property name="text">
      <string>Ok</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>350</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Rockwell Extra Bold</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
+    </property>
+    <property name="text">
+     <string>6</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>370</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Rockwell Extra Bold</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>370</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Rockwell Extra Bold</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color:#7A484E;</string>
+    </property>
+    <property name="text">
+     <string>Erros:</string>
     </property>
    </widget>
   </widget>

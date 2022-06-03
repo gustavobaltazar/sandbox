@@ -1,6 +1,6 @@
 from PyQt5 import *
-from window2 import *
-from window3 import *
+from Jogo_velha import *
+from Forca import *
 import sys
 
 

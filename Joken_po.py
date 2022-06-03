@@ -9,7 +9,6 @@ class Menu(centralofGames.Ui_MainWindow):
         self.setupUi(menu_principal)
         self.btnHangman_2.clicked.connect(self.chamar_joken_po)
 
-
     def chamar_joken_po(self):
         self.joken_po = QtWidgets.QWidget()
         self.j = Joken_po(self.joken_po)
