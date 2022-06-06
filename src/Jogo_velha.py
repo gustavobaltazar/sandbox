@@ -6,7 +6,7 @@ class Second(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(Second, self).__init__()
 		print("robertin")
-		self.window_jogo_velha = uic.loadUi('Widgets/janela_jogo_velha.ui', self)
+		self.window_jogo_velha = uic.loadUi('widgets/janela_jogo_velha.ui', self)
 		self.window_jogo_velha.show()
 
 

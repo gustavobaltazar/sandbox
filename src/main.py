@@ -1,13 +1,12 @@
-from PyQt5 import *
 from Jogo_velha import *
-from Forca import *
+from src.Forca import *
 import sys
 
 
 class First(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(First, self).__init__()
-		uic.loadUi('Widgets/janela_principal.ui', self)
+		uic.loadUi('widgets/janela_principal.ui', self)
 		self.pushButton.clicked.connect(self.abre_jogo_forca)
 		self.pushButton_2.clicked.connect(self.abre_jogo_velha)
 		self.window()

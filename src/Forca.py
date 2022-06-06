@@ -14,7 +14,7 @@ class Third(QtWidgets.QMainWindow):
         self.__win = 0
         self.__try = 0
         self.__life = 6
-        self.window_jogo_forca = uic.loadUi('Widgets/janela_jogo_forca.ui', self)
+        self.window_jogo_forca = uic.loadUi('widgets/janela_jogo_forca.ui', self)
         self.btn_enviar.clicked.connect(self.start)
         self.window_jogo_forca.show()
         self.label_5.setText(f'Dica: {self.__hint}')
