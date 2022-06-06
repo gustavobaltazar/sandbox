@@ -18,6 +18,16 @@ class Forca():
         self.__err = 0
         self.__lp = list()
 
+    def getRandomWord(self):
+        self.__randomWord = self.randomWord()
+        print(self.__randomWord)
+        return self.__randomWord
+
+    def getHint(self):
+        hint = self.__palavras[self.__randomWord]
+        print(hint)
+        return hint
+
     def startGame(self):
         while True:
             letra = str(input("Digite a letra que você quer encontrar: ")).upper()
@@ -27,7 +37,6 @@ class Forca():
                 self.__err += 1
                 if self.__err == 6:
                     print(self.randomWord())
-                    print("Perdeu Play Boy")
                     break
 
             self.printWord(self.__lp, self.__randomWord, letra, iList)
@@ -74,4 +83,4 @@ class Forca():
 
 
 if __name__ == '__main__':
-    cavalo = Forca()
+    game = Forca()
