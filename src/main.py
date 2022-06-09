@@ -1,5 +1,6 @@
 from Jogo_velha import *
 from src.Forca import *
+from Joken import *
 import sys
 
 
@@ -9,6 +10,7 @@ class First(QtWidgets.QMainWindow):
 		uic.loadUi('../widgets/janela_principal.ui', self)
 		self.pushButton.clicked.connect(self.abre_jogo_forca)
 		self.pushButton_2.clicked.connect(self.abre_jogo_velha)
+		self.pushButton_3.clicked.connect(self.abre_jogo_jokenpo)
 		self.window()
 
 	def abre_jogo_velha(self):
@@ -22,7 +24,8 @@ class First(QtWidgets.QMainWindow):
 		window.hide()
 
 	def abre_jogo_jokenpo(self):
-		# Puxar arquivo do JokenPo
+		window4 = Joken_po()
+		# ABRIR O JOKEN PO '-'
 		pass
 
 

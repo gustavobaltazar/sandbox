@@ -1,18 +1,6 @@
-from PyQt5 import QtCore, QtWidgets
-import centralofGames
-import jogo_joken_po
 import random
-
-
-class Menu(centralofGames.Ui_MainWindow):
-	def __init__(self, menu_principal):
-		self.setupUi(menu_principal)
-		self.btnHangman_2.clicked.connect(self.chamar_joken_po)
-
-	def chamar_joken_po(self):
-		self.joken_po = QtWidgets.QWidget()
-		self.j = Joken_po(self.joken_po)
-		self.joken_po.show()
+import jogo_joken_po
+from PyQt5 import QtCore, QtWidgets
 
 
 class Joken_po(jogo_joken_po.Ui_Form):
@@ -89,13 +77,3 @@ class Joken_po(jogo_joken_po.Ui_Form):
 	def __sortear():
 		__class__.escolha = random.choice(Joken_po.escolhas)
 		print(Joken_po.escolha)
-
-
-if __name__ == "__main__":
-	import sys
-
-	app = QtWidgets.QApplication(sys.argv)
-	menu_principal = QtWidgets.QMainWindow()
-	m = Menu(menu_principal)
-	menu_principal.show()
-	sys.exit(app.exec_())
