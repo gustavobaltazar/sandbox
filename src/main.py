@@ -21,6 +21,10 @@ class First(QtWidgets.QMainWindow):
 		window3.window_jogo_forca.show()
 		window.hide()
 
+	def abre_jogo_jokenpo(self):
+		# Puxar arquivo do JokenPo
+		pass
+
 
 if __name__ == '__main__':
 	app = QtWidgets.QApplication(sys.argv)

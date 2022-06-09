@@ -39,7 +39,7 @@ class mainGame:
         self.__win = 0
         for i in range(0, 3):
             for j in range(0, 2):
-                if self.validChar(self.game[i][j] and self.game[i][j] == self.game[i][j+1]):
+                if self.validChar(self.game[i][j]) and self.game[i][j] == self.game[i][j+1]:
                     self.__win += 1
                 if self.__win == 2:
                     return 1
@@ -50,7 +50,7 @@ class mainGame:
         self.__win = 0
         for i in range(0, 3):
             for j in range(0, 2):
-                if (self.validChar(self.game[j][i]) and self.game[j][i] == self.game[j + 1][i]):
+                if self.validChar(self.game[j][i]) and self.game[j][i] == self.game[j + 1][i]:
                     self.__win += 1
                 if self.__win == 2:
                     return 1

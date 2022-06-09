@@ -27,7 +27,7 @@ class Joken_po(jogo_joken_po.Ui_Form):
         self.btn_reset.clicked.connect(self.resetar)
         self.btn_pedra_2.clicked.connect(self.entrada_nome_usuario)
         self.contador_pessoal = 0
-        self. contador_pc = 0
+        self.contador_pc = 0
         self.__sortear()
 
     def entrada_nome_usuario(self):
