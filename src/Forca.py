@@ -19,6 +19,9 @@ class Third(QtWidgets.QMainWindow):
 		self.window_jogo_forca.show()
 		self.label_5.setText(f'Dica: {self.__hint}')
 
+		# SHORTCUT
+		self.btn_enviar.setShortcut("Enter")
+
 	def clearData(self):
 		self.__lp = list()
 		self.__err = 0
@@ -29,7 +32,6 @@ class Third(QtWidgets.QMainWindow):
 	def reset(self):
 		self.__randomWord = self.forca.getRandomWord()
 		self.label_5.setText(f'Dica: {self.forca.getHint()}')
-		self.label_8.setText("PERDEU MANO")
 		self.label_6.setText(str("0"))
 		self.label_7.setText(str("6"))
 		self.label_9.setText(str("0"))
@@ -54,6 +56,7 @@ class Third(QtWidgets.QMainWindow):
 			self.label_7.setText(str(self.__life))
 			self.label_9.setText(str(self.__err))
 			if self.__err == 6:
+				self.label_8.setText("PERDEU MANO")
 				self.clearData()
 				self.reset()
 				return
@@ -61,8 +64,8 @@ class Third(QtWidgets.QMainWindow):
 		cvl = [x.upper() for x in self.__lp]
 		if self.forca.winner(self.__randomWord, cvl, letra_input):
 			self.label_8.setText("VOCÊ GANHOU!!!")
-			sleep(2000)
 			self.clearData()
+			self.reset()
 		else:
 			pass
 
