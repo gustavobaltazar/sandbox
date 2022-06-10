@@ -1,6 +1,6 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QPushButton
-
+from PyQt5 import QtGui
 from game import mainGame
 import sys
 
@@ -12,6 +12,12 @@ class Second(QtWidgets.QMainWindow):
 		# START WINDOW AND SHOW
 		self.window_jogo_velha = uic.loadUi('../widgets/janela_jogo_velha.ui', self)
 		self.window_jogo_velha.show()
+
+		# SET WINDOW OPTIONS
+		title = "JOGO DA MAIS IDOSA"
+		self.setWindowTitle(title)
+		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.window_jogo_velha.setFixedSize(self.size())
 
 		# INITIAL DEFINE
 		self.console_label.setText("")

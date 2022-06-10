@@ -1,5 +1,5 @@
 from Jogo_velha import *
-from src.Forca import *
+from Forca import *
 from Joken_po import *
 from PyQt5.QtGui import QMovie
 from PyQt5 import QtGui

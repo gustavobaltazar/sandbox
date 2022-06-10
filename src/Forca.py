@@ -1,5 +1,6 @@
 from time import sleep
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtGui
+
 import pythonforca
 
 
@@ -7,6 +8,8 @@ class Third(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(Third, self).__init__()
 		self.forca = pythonforca.Forca()
+
+		# SET GAME VARIABLES
 		self.__randomWord = self.forca.getRandomWord()
 		self.__hint = self.forca.getHint()
 		self.__lp = list()
@@ -14,9 +17,23 @@ class Third(QtWidgets.QMainWindow):
 		self.__win = 0
 		self.__try = 0
 		self.__life = 6
+
+		# LOAD WINDOW
 		self.window_jogo_forca = uic.loadUi('../widgets/janela_jogo_forca.ui', self)
+
+		# SET BUTTON CONNECTION
 		self.btn_enviar.clicked.connect(self.start)
+
+		# SHOW WINDOW
 		self.window_jogo_forca.show()
+
+		# SET WINDOW OPTIONS
+		title = "FORCA"
+		self.setWindowTitle(title)
+		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.window_jogo_forca.setFixedSize(self.size())
+
+		# SET HINT LABEL
 		self.label_5.setText(f'Dica: {self.__hint}')
 
 		# SHORTCUT

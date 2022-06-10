@@ -1,4 +1,4 @@
-from PyQt5 import uic, QtCore, QtWidgets
+from PyQt5 import uic, QtCore, QtWidgets, QtGui
 import random
 
 class Joken_po(QtWidgets.QMainWindow):
@@ -7,14 +7,30 @@ class Joken_po(QtWidgets.QMainWindow):
 
 	def __init__(self):
 		super(Joken_po, self).__init__()
+
+		# SET WINDOW
 		self.window_jogo_joken = uic.loadUi('../widgets/jogo_joken_po.ui', self)
+
+		# SET WINDOW OPTIONS
+		title = "JOKEN-PO"
+		self.setWindowTitle(title)
+		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.window_jogo_velha.setFixedSize(self.size())
+
+		# SET DEFAULT HANG BUTTONS
 		self.btn_pedra.clicked.connect(self.pedra_click)
 		self.btn_papel.clicked.connect(self.papel_click)
 		self.btn_tesoura.clicked.connect(self.tesoura_click)
+
+		# SET RESET BUTTON
 		self.btn_reset.clicked.connect(self.resetar)
 		self.btn_pedra_2.clicked.connect(self.entrada_nome_usuario)
+
+		# SET COUNT VARIABLES
 		self.contador_pessoal = 0
 		self.contador_pc = 0
+
+		# SET RANDOM CHOICE
 		self.__sortear()
 
 	def entrada_nome_usuario(self):
