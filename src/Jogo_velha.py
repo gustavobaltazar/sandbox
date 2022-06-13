@@ -1,5 +1,6 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtGui import QMovie
 from PyQt5 import QtGui
 from game import mainGame
 import sys
@@ -16,8 +17,14 @@ class Second(QtWidgets.QMainWindow):
 		# SET WINDOW OPTIONS
 		title = "JOGO DA MAIS IDOSA"
 		self.setWindowTitle(title)
-		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.setWindowIcon(QtGui.QIcon('../img/favicon.png'))
 		self.window_jogo_velha.setFixedSize(self.size())
+
+		# FIXED BACKGROUND
+		qImg = QtGui.QImage('../img/velha.png')
+		pixmap = QtGui.QPixmap.fromImage(qImg)
+		self.wrapper.setPixmap(pixmap)
+		self.window()
 
 		# INITIAL DEFINE
 		self.console_label.setText("")

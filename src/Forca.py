@@ -1,5 +1,8 @@
 from time import sleep
+
+import timer
 from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5.QtGui import QMovie
 
 import pythonforca
 
@@ -30,8 +33,14 @@ class Third(QtWidgets.QMainWindow):
 		# SET WINDOW OPTIONS
 		title = "FORCA"
 		self.setWindowTitle(title)
-		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.setWindowIcon(QtGui.QIcon('../img/favicon.png'))
 		self.window_jogo_forca.setFixedSize(self.size())
+
+		# FIXED BACKGROUND
+		qImg = QtGui.QImage('../img/forca.png')
+		pixmap = QtGui.QPixmap.fromImage(qImg)
+		self.wrapper.setPixmap(pixmap)
+		self.window()
 
 		# SET HINT LABEL
 		self.label_5.setText(f'Dica: {self.__hint}')

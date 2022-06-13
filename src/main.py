@@ -15,7 +15,7 @@ class First(QtWidgets.QMainWindow):
 		# SET WINDOW OPTIONS
 		title = "GAME HUB"
 		self.setWindowTitle(title)
-		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.setWindowIcon(QtGui.QIcon('../img/favicon.png'))
 		ui.setFixedSize(self.size())
 
 		# SET CLICK OPTION

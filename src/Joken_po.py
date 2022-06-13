@@ -14,7 +14,7 @@ class Joken_po(QtWidgets.QMainWindow):
 		# SET WINDOW OPTIONS
 		title = "JOKEN-PO"
 		self.setWindowTitle(title)
-		self.setWindowIcon(QtGui.QIcon('../imgs/favicon.png'))
+		self.setWindowIcon(QtGui.QIcon('../img/favicon.png'))
 		self.window_jogo_velha.setFixedSize(self.size())
 
 		# SET DEFAULT HANG BUTTONS
