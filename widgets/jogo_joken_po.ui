@@ -28,24 +28,6 @@
   <property name="styleSheet">
    <string notr="true">background-color:rgb(134, 186, 255);</string>
   </property>
-  <widget class="QLabel" name="titulo">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>30</y>
-     <width>201</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 75 19pt &quot;MS Shell Dlg 2&quot;;
-text-decoration: underline;
-</string>
-   </property>
-   <property name="text">
-    <string>Jogo Joken Po!</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btn_pedra">
    <property name="geometry">
     <rect>
@@ -56,10 +38,20 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(127, 127, 127);</string>
+    <string notr="true">background-color: transparent;</string>
    </property>
    <property name="text">
-    <string>Pedra</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/rock.png</normaloff>../img/rock.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_papel">
@@ -72,10 +64,20 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(214, 214, 214);</string>
+    <string notr="true">background-color: transparent;</string>
    </property>
    <property name="text">
-    <string>Papel</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/paper.png</normaloff>../img/paper.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_tesoura">
@@ -88,13 +90,23 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(200, 87, 67);</string>
+    <string notr="true">background-color: transparent;</string>
    </property>
    <property name="text">
-    <string>Tesoura</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/scissors.png</normaloff>../img/scissors.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
    </property>
   </widget>
-  <widget class="QLabel" name="resposta">
+  <widget class="QLabel" name="response">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -103,11 +115,23 @@ text-decoration: underline;
      <height>111</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);</string>
+    <string notr="true">background:rgba(0,0,0,0.28);
+border: 2px solid black;
+border-radius: 30px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_reset">
@@ -119,45 +143,48 @@ text-decoration: underline;
      <height>61</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:rgb(143, 150, 158);</string>
-   </property>
-   <property name="text">
-    <string>Resetar</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>120</y>
-     <width>281</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_pedra_2">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>120</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>8</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(127, 127, 127);</string>
+    <string notr="true">background-color: transparent;</string>
    </property>
    <property name="text">
-    <string>Enter</string>
+    <string/>
    </property>
-   <property name="autoDefault">
-    <bool>true</bool>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/back.png</normaloff>../img/back.png</iconset>
    </property>
-   <property name="default">
-    <bool>true</bool>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
    </property>
   </widget>
+  <widget class="QLabel" name="wrapper">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>450</width>
+     <height>530</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>wrapper</zorder>
+  <zorder>btn_pedra</zorder>
+  <zorder>btn_papel</zorder>
+  <zorder>btn_tesoura</zorder>
+  <zorder>response</zorder>
+  <zorder>btn_reset</zorder>
  </widget>
  <resources/>
  <connections/>

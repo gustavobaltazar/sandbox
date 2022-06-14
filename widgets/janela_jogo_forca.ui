@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,13 +103,18 @@ color: white;</string>
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
       <strikeout>false</strikeout>
       <kerning>true</kerning>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="styleSheet">
      <string notr="true">background: transparent;
@@ -132,10 +137,19 @@ font-size: 42px;
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border: none;
-background-color:rgb(109, 0, 82);
-border-radius:7px;
+     <string notr="true">background-color:transparent;
+border: 2px solid black;
+border-radius:10px;
 
 </string>
     </property>
@@ -150,7 +164,8 @@ border-radius:7px;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 30, 109);
+     <string notr="true">background-color: transparent;
+border: 2px solid black;
 border-radius: 10px;</string>
     </property>
     <property name="text">
@@ -237,14 +252,16 @@ color: white;</string>
      <rect>
       <x>30</x>
       <y>380</y>
-      <width>291</width>
+      <width>441</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Rockwell Extra Bold</family>
-      <pointsize>12</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -279,7 +296,6 @@ color: white;</string>
    <zorder>label_4</zorder>
    <zorder>label_5</zorder>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

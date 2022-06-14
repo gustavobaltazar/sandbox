@@ -2,8 +2,8 @@ from PyQt5 import uic, QtCore, QtWidgets, QtGui
 import random
 
 class Joken_po(QtWidgets.QMainWindow):
-	escolhas = ['Pedra', 'Papel', 'Tesoura']
-	escolha = ''
+	listChoose = ['ROCK', 'PAPER', 'SCISSORS']
+	choose = ''
 
 	def __init__(self):
 		super(Joken_po, self).__init__()
@@ -15,7 +15,13 @@ class Joken_po(QtWidgets.QMainWindow):
 		title = "JOKEN-PO"
 		self.setWindowTitle(title)
 		self.setWindowIcon(QtGui.QIcon('../img/favicon.png'))
-		self.window_jogo_velha.setFixedSize(self.size())
+		self.window_jogo_joken.setFixedSize(self.size())
+
+		# FIXED BACKGROUND
+		qImg = QtGui.QImage('../img/joken-po.png')
+		pixmap = QtGui.QPixmap.fromImage(qImg)
+		self.wrapper.setPixmap(pixmap)
+		self.window()
 
 		# SET DEFAULT HANG BUTTONS
 		self.btn_pedra.clicked.connect(self.pedra_click)
@@ -23,73 +29,69 @@ class Joken_po(QtWidgets.QMainWindow):
 		self.btn_tesoura.clicked.connect(self.tesoura_click)
 
 		# SET RESET BUTTON
-		self.btn_reset.clicked.connect(self.resetar)
-		self.btn_pedra_2.clicked.connect(self.entrada_nome_usuario)
+		self.btn_reset.clicked.connect(self.reset)
 
 		# SET COUNT VARIABLES
-		self.contador_pessoal = 0
-		self.contador_pc = 0
+		self.playerCount = 0
+		self.computerCount = 0
 
 		# SET RANDOM CHOICE
-		self.__sortear()
+		self.__sort()
 
-	def entrada_nome_usuario(self):
-		self.titulo.setGeometry(QtCore.QRect(1, 30, 500, 60))
-		nome_usuario = self.lineEdit.text()
-		texto = "Bem vindo  " + str(nome_usuario)
-		self.titulo.setText(texto)
-		self.btn_pedra_2.setEnabled(False)
-
-	def resetar(self):
+	# RESET GAME
+	def reset(self):
 		self.btn_pedra.setEnabled(True)
 		self.btn_tesoura.setEnabled(True)
 		self.btn_papel.setEnabled(True)
-		print(f"Pontução pessoal {self.contador_pessoal} Pontuação do pc {self.contador_pc}")
-		Joken_po.__sortear()
+		print(f"YOU: {self.playerCount} | PC: {self.computerCount}")
+		Joken_po.__sort()
 
-	def verificar_vitoria(self):
-		if self.escolha == 'Pedra' and Joken_po.escolha == 'Tesoura':
-			self.resposta.setText("Você venceu, parabéns!!!!")
-			self.contador_pessoal += 1
-		elif self.escolha == 'Pedra' and Joken_po.escolha == 'Tesoura':
-			self.resposta.setText("Computador venceu, derrota!!!!")
-			self.contador_pc += 1
-		elif self.escolha == 'Tesoura' and Joken_po.escolha == 'Papel':
-			self.resposta.setText("Você venceu, parabéns!!!!")
-			self.contador_pessoal += 1
-		elif self.escolha == 'Papel' and Joken_po.escolha == 'Tesoura':
-			self.resposta.setText("Computador venceu, derrota!!!!")
-			self.contador_pc += 1
-		elif self.escolha == 'Papel' and Joken_po.escolha == 'Pedra':
-			self.resposta.setText("Você venceu, parabéns!!!!")
-			self.contador_pessoal += 1
-		elif self.escolha == 'Pedra' and Joken_po.escolha == 'Papel':
-			self.resposta.setText("Computador venceu, derrota!!!!")
-			self.contador_pc += 1
-		elif self.escolha == 'Pedra' and Joken_po.escolha == 'Pedra':
-			self.resposta.setText("Empate!!!!")
-		elif self.escolha == 'Tesoura' and Joken_po.escolha == 'Tesoura':
-			self.resposta.setText("Empate!!!!")
-		elif self.escolha == 'Papel' and Joken_po.escolha == 'Papel':
-			self.resposta.setText("Empate!!!!")
+	# VERIF WIN CONDITION
+	def verifWin(self):
+		if self.choose == 'ROCK' and Joken_po.choose == 'SCISSORS':
+			self.response.setText("YOU WIN")
+			self.playerCount += 1
+		elif self.choose == 'ROCK' and Joken_po.choose == 'SCISSORS':
+			self.response.setText("PC WIN")
+			self.computerCount += 1
+		elif self.choose == 'SCISSORS' and Joken_po.choose == 'PAPER':
+			self.response.setText("YOU WIN")
+			self.playerCount += 1
+		elif self.choose == 'PAPER' and Joken_po.choose == 'SCISSORS':
+			self.response.setText("PC WIN")
+			self.computerCount += 1
+		elif self.choose == 'PAPAR' and Joken_po.choose == 'ROCK':
+			self.response.setText("YOU WIN")
+			self.playerCount += 1
+		elif self.choose == 'ROCK' and Joken_po.choose == 'PAPER':
+			self.response.setText("PC WIN")
+			self.computerCount += 1
+		elif self.choose == 'ROCK' and Joken_po.choose == 'ROCK':
+			self.response.setText("DRAW")
+		elif self.choose == 'SCISSORS' and Joken_po.choose == 'SCISSORS':
+			self.response.setText("DRAW")
+		elif self.choose == 'PAPER' and Joken_po.choose == 'PAPER':
+			self.response.setText("DRAW")
 		self.btn_pedra.setEnabled(False)
 		self.btn_papel.setEnabled(False)
 		self.btn_tesoura.setEnabled(False)
 
+
+	# BUTTON CLICKS
 	def pedra_click(self):
-		self.escolha = 'Pedra'
-		self.verificar_vitoria()
+		self.choose = 'ROCK'
+		self.verifWin()
 
 	def papel_click(self):
-		self.escolha = 'Papel'
-		self.verificar_vitoria()
+		self.choose = 'PAPER'
+		self.verifWin()
 
 	def tesoura_click(self):
-		self.escolha = 'Tesoura'
-		self.verificar_vitoria()
+		self.choose = 'SCISSORS'
+		self.verifWin()
 
 	@staticmethod
-	def __sortear():
-		__class__.escolha = random.choice(Joken_po.escolhas)
-		print(Joken_po.escolha)
+	def __sort():
+		__class__.choose = random.choice(Joken_po.listChoose)
+		print(f'RANDOM CHOICE: {Joken_po.choose}')
 
