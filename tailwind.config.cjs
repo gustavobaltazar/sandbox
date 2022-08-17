@@ -13,8 +13,9 @@ module.exports = {
         '2000': '2000ms',
       }, 
       colors: {
-        escure: "#18181B",
-        maincolor: "#8257E5"
+        escure: "#1d1929",
+        maincolor: "#8257E5",
+        escurinho: "#323238",
       },
       backgroundSize: {
         'size-200': '200% 200%',

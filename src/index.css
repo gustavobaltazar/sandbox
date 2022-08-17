@@ -6,12 +6,24 @@
     @apply hidden
 }
 
+.input-text {
+    @apply rounded text-black bg-slate-200
+}
+
+.centralize {
+    @apply flex justify-center items-center
+}
+
+.input-style {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight text-white dark:text-black
+}
+
 @layer components {
     html {
         font-family: 'Poppins', sans-serif;
     }
     .dark {
-        background-color: #18181B;
+        background-color: #1d1929;
         color: white;
     }
 
