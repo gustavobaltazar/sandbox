@@ -6,11 +6,16 @@
     @apply hidden
 }
 
-.dark{
-    background-color: #18181B;
-    color: white;
-}
+@layer components {
+    html {
+        font-family: 'Poppins', sans-serif;
+    }
+    .dark {
+        background-color: #18181B;
+        color: white;
+    }
 
-.light{
-    color: black;
-}
+    .light{
+        color: black;
+    }
+  }

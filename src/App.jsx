@@ -4,7 +4,7 @@ import { DarkMode } from './components/DarkmodeControl/Darkmode'
 
 export const App = () => {
   return (
-    <div className="">
+    <div>
       <Navbar />
       <Content />
     </div>
