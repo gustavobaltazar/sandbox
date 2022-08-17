@@ -4,7 +4,7 @@ module.exports = {
   "./index.html",
   "./src/**/*.{vue,js,ts,jsx,tsx}",
 ],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       transitionDuration: {
@@ -12,7 +12,7 @@ module.exports = {
         '2000': '2000ms',
       }, 
       colors: {
-        darkmode: "#18181B",
+        escure: "#18181B",
         maincolor: "#8257E5"
       },
       backgroundSize: {

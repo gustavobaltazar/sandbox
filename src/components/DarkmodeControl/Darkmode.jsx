@@ -2,24 +2,20 @@ import { useState, useContext, createContext, useEffect } from 'react'
 const themeContext = createContext()
 
 export const DarkMode = ({ children }) => {
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("isDarkMode") !== "dark" ? "light" : "dark")
+    const [theme, setTheme] = useState(localStorage.getItem("theme") !== "dark" ? "light" : "dark")
 
     useEffect(() => {
         const root = window.document.documentElement
-
-        console.log("funfo")
-
-        const removeOldTheme = isDarkMode === "dark" ? "light": "dark"
+        const removeOldTheme = theme === "dark" ? "light" : "dark"
+          
         root.classList.remove(removeOldTheme)
-        root.classList.add(isDarkMode)
-        localStorage.setItem("theme", isDarkMode)
-    },[isDarkMode])
+        root.classList.add(theme)
+        localStorage.setItem("theme", theme)
+    }, [theme])
     return (
-        <>
-            <themeContext.Provider value={{isDarkMode, setIsDarkMode}}>
-                { children }
-            </themeContext.Provider>
-        </>
+        <themeContext.Provider value={{ theme, setTheme }}>
+            {children}
+        </themeContext.Provider>
     )
 }
 

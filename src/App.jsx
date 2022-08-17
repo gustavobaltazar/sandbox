@@ -4,12 +4,10 @@ import { DarkMode } from './components/DarkmodeControl/Darkmode'
 
 export const App = () => {
   return (
-    <DarkMode>
-      <div className="bg-darkmode h-screen">  
-        <Navbar />
-        <Content />
-      </div>
-    </DarkMode>
+    <div className="">
+      <Navbar />
+      <Content />
+    </div>
   )
 }
 

@@ -5,3 +5,12 @@
 .display-none {
     @apply hidden
 }
+
+.dark{
+    background-color: #18181B;
+    color: white;
+}
+
+.light{
+    color: black;
+}
