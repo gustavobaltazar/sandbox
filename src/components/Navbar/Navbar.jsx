@@ -10,9 +10,9 @@ export const Navbar = () => {
     return (
         <>
             <div className="flex justify-between px-10 py-4">
-                <img src="/logo-bank.png" className="h-14" />
+                <img src="/logo-bank.png" className="h-14 hover:animate-spin" />
                 <div className="flex items-center gap-5">
-                    {theme === "light" ? (<MdDarkMode size={30} className="cursor-pointer" onClick={() => setTheme("dark")} />) :
+                    {theme === "light" ? (<MdDarkMode size={30} className="cursor-pointer text-escure" onClick={() => setTheme("dark")} />) :
                         (<BsFillLightbulbFill size={30} className="cursor-pointer text-white" onClick={() => setTheme("light")} />)}
 
                     <Links linkName="Home" />

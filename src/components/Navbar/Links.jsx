@@ -1,5 +1,5 @@
 export const Links = ({linkName= "Error"}) => {
     return(
-        <a href="">{ linkName }</a>
+        <a className="hover:text-pink-500" href="">{ linkName }</a>
     )
 }

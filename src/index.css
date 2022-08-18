@@ -15,7 +15,7 @@
 }
 
 .input-style {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight text-white dark:text-black
+    @apply shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight text-white dark:text-black
 }
 
 @layer components {
