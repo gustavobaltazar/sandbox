@@ -6,10 +6,9 @@ import { DarkMode } from './components/DarkmodeControl/Darkmode'
 import { LoginPage } from './components/LoginPage/LoginPage'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+
     <DarkMode>
       <App />
     </DarkMode>
-
-  </React.StrictMode>
 )
+

@@ -3,31 +3,36 @@
 @tailwind utilities;
 
 .display-none {
-    @apply hidden
+  @apply hidden;
 }
 
 .input-text {
-    @apply rounded text-black bg-slate-200
+  @apply rounded text-black bg-slate-200;
 }
 
 .centralize {
-    @apply flex justify-center items-center
+  @apply flex justify-center items-center;
 }
 
 .input-style {
-    @apply shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight text-white dark:text-black
+  @apply shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight text-white dark:text-black;
+}
+
+.letrabonita {
+  @apply bg-gradient-to-br from-pink-500 via-maincolor to-maincolor;
 }
 
 @layer components {
-    html {
-        font-family: 'Poppins', sans-serif;
-    }
-    .dark {
-        background-color: #1d1929;
-        color: white;
-    }
-
-    .light{
-        color: black;
-    }
+  html {
+    font-family: "Poppins", sans-serif;
   }
+  .dark {
+    background-color: #1d1929;
+    color: white;
+  }
+
+  .light {
+    color: black;
+  }
+  
+}
