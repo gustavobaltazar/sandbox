@@ -25,6 +25,7 @@
 @layer components {
   html {
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
   }
   .dark {
     background-color: #1d1929;

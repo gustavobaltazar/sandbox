@@ -3,8 +3,9 @@ import { ArrowDown } from "./ArrowDown"
 export const Content = () => {
     return (
         <>
-            <div className="flex justify-center items-center py-64 text-center">
-                <h1 className="select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2">Baltas Bank é o que você precisa confia!</h1>
+            <div className="py-56">
+                <h1 className="px-6 select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2">Baltas Bank É o que você Precisa</h1>
+                <h1 className="px-6 py-10 select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2">Confia!</h1>
             </div>
 
             <ArrowDown href="content" />
