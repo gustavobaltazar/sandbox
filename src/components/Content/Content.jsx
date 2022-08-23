@@ -16,6 +16,11 @@ export const Content = () => {
       <div className="flex items-center py-96" id="content">
         <h1 className="text-escure dark:text-white text-xl px-5">ola ola </h1>
       </div>
+
+
+      <div className="text-pink-500 text-2xl ml-2">
+        <h1>oi maite</h1>
+      </div>
     </>
   );
 };
