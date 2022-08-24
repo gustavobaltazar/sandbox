@@ -11,7 +11,7 @@ export const LoginPage = () => {
         <img src="/logo-bank.png" className="h-14 fixed m-5" />
       </a>
       <div className="centralize px-10">
-        <div className="absolute right-0 top-6 h-16 w-16">
+        <div className="absolute right-0 top-6 h-16 w-16 md:select-none">
           {theme === "light" ? (
             <MdDarkMode
               size={30}

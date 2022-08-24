@@ -16,6 +16,8 @@ module.exports = {
         escure: "#1d1929",
         maincolor: "#8257E5",
         escurinho: "#323238",
+        contentDark : "#121214",
+        textColor: "#c4c4cc",
       },
       backgroundSize: {
         'size-200': '200% 200%',

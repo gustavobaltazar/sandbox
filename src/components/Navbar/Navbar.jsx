@@ -10,7 +10,7 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="md:flex md:justify-between md:py-4 my-4 ml-4 md:mr-8">
+      <div className="md:flex md:justify-between my-4 ml-4 md:mr-8 md:items-center">
         <img
           src="/logo-bank.png"
           className="h-14 saturate-200 shrink-0 ml-4 my-4"
@@ -43,23 +43,23 @@ export const Navbar = () => {
             />
           )}
           <div className="flex flex-col justify-center text-center gap-2 w-full md:flex md:flex-row md:gap-2 md:justify-center">
-            <div className="border-b-2 w-full md:border-none">
+            <div className="border-b-2 w-full md:border-none md:select-none">
               <Links linkName="Home" />
             </div>
-            <div className="border-b-2 w-full md:border-none">
+            <div className="border-b-2 w-full md:border-none md:select-none">
               <Links linkName="Contact" />
             </div>
-            <div className="border-b-2 w-full md:border-none">
+            <div className="border-b-2 w-full md:border-none md:select-none">
               <Links linkName="About" />
             </div>
-            <div className="border-b-2 w-full md:border-none">
+            <div className="border-b-2 w-full md:border-none md:select-none">
               <Links linkName="Wallet" />
             </div>
           </div>
 
           <a
             href="/LoginPage"
-            className="text-white rounded-full transition-all duration-[500ms] bg-gradient-to-tl from-pink-500 via-maincolor to-maincolor bg-size-200 bg-pos-0 hover:bg-pos-100 text-center px-4 py-2 ml-2 md:text-center md:flex md:justify-center md:items-center"
+            className="text-white rounded-full transition-all duration-[500ms] bg-gradient-to-tl from-pink-500 via-maincolor to-maincolor bg-size-200 bg-pos-0 hover:bg-pos-100 text-center px-4 py-2 ml-2 md:text-center md:flex md:justify-center md:items-center md:select-none"
           >
             Login
           </a>
