@@ -6,8 +6,8 @@ export const Content = () => {
       <div className="py-44">
         <h1 className="px-6 select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2 md:capitalize">
           Baltas Bank É o que você Precisa
-        </h1>
-        <h1 className="px-6 py-10 select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2">
+        </h1> 
+        <h1 className="px-6 py-6 select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-maincolor0 to-maincolor tracking-wider subpixel-antialiased leading-2">
           Confia!
         </h1>
       </div>
