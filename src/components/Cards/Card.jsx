@@ -2,7 +2,7 @@ import { Inputs } from "./Inputs"
 export const Card = () => {
     return (
         <div className="text-center h-screen flex justify-center items-center">
-            <div className="bg-escurinho p-36 text-center text-white dark:bg-white inline-block rounded-lg">
+            <div className="bg-escurinho p-24 md:p-36 text-center text-white dark:bg-white inline-block rounded-lg">
                 <h1 className="text-white text-2xl dark:text-black mb-8">Make your login</h1>
                 <div className="flex flex-col w-48 gap-6 justify-center items-center">
                     <Inputs username="Username" type="text" placeholder="Username" />

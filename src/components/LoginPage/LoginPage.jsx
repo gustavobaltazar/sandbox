@@ -7,11 +7,11 @@ export const LoginPage = () => {
   const { theme, setTheme } = useTheme();
   return (
     <>
-      <a href="/">
-        <img src="/logo-bank.png" className="h-14 fixed m-5" />
-      </a>
-      <div className="centralize px-10">
-        <div className="absolute right-0 top-6 h-16 w-16 md:select-none">
+      <div className="flex justify-between">
+        <a href="/">
+          <img src="/baltas-bank-logo-reduzida.png" className="absolute left-0  h-44 shrink-0 md:select-none" />
+        </a>
+        <div className="absolute right-0 top-16 h-16 w-16 md:select-none">
           {theme === "light" ? (
             <MdDarkMode
               size={30}
@@ -26,6 +26,8 @@ export const LoginPage = () => {
             />
           )}
         </div>
+      </div>
+      <div className="centralize px-10">
         <Card />
       </div>
     </>
