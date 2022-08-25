@@ -11,7 +11,7 @@ export const LoginPage = () => {
         <a href="/">
           <img src="/baltas-bank-logo-reduzida.png" className="absolute left-0 h-44 shrink-0 md:select-none" />
         </a>
-        <div className="absolute right-0 top-16 text-center h-16 w-16 md:select-none">
+        <div className="absolute right-0 top-16 mr-4 mt-1 text-center h-16 w-16 md:select-none">
           {theme === "light" ? (
             <MdDarkMode
               size={30}
