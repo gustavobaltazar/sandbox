@@ -1,10 +1,14 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_list_or_404, get_object_or_404
 from .models import Courses
 
 # Create your views here.
 
 def index(request):
-  return render(request, 'index.html')
+  cursos = Courses.objects.all()
+  dados = { 
+    'cursos': cursos
+  }
+  return render(request, 'index.html', dados)
 
 # def get_courses(request):
 #   data = Cursos.objects.all()
@@ -13,18 +17,9 @@ def index(request):
 #   }
 #   return render(request, 'index.html', context)
 
-def cursos(request):
-  return render(request, 'curso.html')
-
-def index(request):
-  cursos = {
-    1 : 'Smart Automation',
-    2 : 'Mecatrônica',
-    3 : 'Manufatura Digital',
-    4 : 'Administração'
+def cursos(request, curso_id):
+  curso = get_object_or_404(Courses, pk=curso_id)
+  curso_a_ser_exibido = {
+    'curso': curso
   }
-
-  dados = {
-    'nome_cursos' : cursos
-  }
-  return render(request, 'index.html', dados)
+  return render(request, 'curso.html', curso_a_ser_exibido)

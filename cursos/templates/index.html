@@ -92,7 +92,6 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="{% url 'index' %}">Home</a></li>
-                                    <li><a href="{% url 'curso' %}">Cursos</a></li>
                                 </ul>
 
                                 <!-- Formulario de busca -->
@@ -115,18 +114,31 @@
    <section class="course-area">
     <div class="container">
         <div class="row">
-            {% for id, curso in nome_cursos.items  %}
+        {% if cursos %}
+            {% for curso in cursos %}
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-course-area mb-30">
                         <img src="{% static 'img/bg-img/foto_aprendiz.png' %}" alt="">
                         <div class="course-content">
-                            <a href="{% url 'curso' %}">
-                                <h5>{{curso}}</h5>
+                            <a href="{% url 'curso' curso.id %}">
+                                <h5>{{curso.nome_curso_bosch}}</h5>
                             </a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+        {% else %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="single-course-area mb-30">
+                    <img src="{% static 'img/bg-img/foto_aprendiz.png' %}" alt="">
+                    <div class="course-content">
+                        <a href="{% url 'curso' %}">
+                            <h5>teste</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
             </div>
         </div>
     </section>
