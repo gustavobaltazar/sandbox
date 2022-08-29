@@ -12,10 +12,10 @@ import {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <Routes>
-    <Route path="/" element={ <App /> }/>
-    <Route path="/LoginPage" element={ <DarkMode> <LoginPage /> </DarkMode> }/>
-  </Routes>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/LoginPage" element={<DarkMode> <LoginPage /> </DarkMode>} />
+    </Routes>
   </BrowserRouter>
 )
 
