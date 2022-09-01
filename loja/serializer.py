@@ -1,7 +1,7 @@
 from dataclasses import fields
 from decimal import Decimal
 from rest_framework import serializers
-from loja.models import Produto
+from loja.models import Cliente, Pedido, Produto
 
 # class ProdutoSerializer(serializers.Serializer):
 #     id = serializers.IntegerField()
@@ -22,3 +22,12 @@ class ProdutoSerializer(serializers.ModelSerializer):
     def calcular_taxa(self, produto : Produto):
         return produto.preco * Decimal(1.1)
 
+class ClienteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields=['nome', 'cpf', 'email']
+
+class PedidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pedido
+        fields = ['dt_pedido', 'status_pagamento', 'cliente_pedido']
