@@ -25,9 +25,9 @@ class ProdutoSerializer(serializers.ModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields=['nome', 'cpf', 'email']
+        fields=['id','nome', 'cpf', 'email']
 
 class PedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
-        fields = ['dt_pedido', 'status_pagamento', 'cliente_pedido']
+        fields = ['id','dt_pedido', 'status_pagamento', 'cliente_pedido']

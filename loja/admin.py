@@ -8,5 +8,6 @@ admin.site.register(models.Cliente)
 
 class PedidoAdmin(admin.ModelAdmin):
     model = Pedido
-    list_display = ['item_escolhido', 'status_pagamento']
+    list_display = ['item_escolhido', 'status_pagamento', 'cliente_pedido']
 admin.site.register(Pedido, PedidoAdmin)
+
