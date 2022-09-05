@@ -13,19 +13,26 @@ export const Content = () => {
       </div>
 
       <ArrowDown href="content" />
-      
-      <div className="flex bg-contentDark flex-col gap-8" id="content">
-        <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12">Cartão de Crédito</h1>
-        <h1 className="ml-20 text-white text-4xl">Gratuito, Prático e moderno</h1>
+
+      <div className="flex flex-col bg-contentDark gap-8 md:flex md:justify-center md:items-center" id="content">
+        <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12 md:ml-0 md:text-6xl">Cartão de Crédito</h1>
+        <h1 className="ml-20 text-black dark:text-white text-4xl md:ml-0">Gratuito, Prático e moderno</h1>
         <img
           src="/credit-card.png"
-          className="h-15 saturate-200 ml-5 my-5 mr-5"
+          className="h-15 saturate-200 ml-5 my-5 mr-5 md:w-96 md:h-60"
         />
-        <h1 className="ml-8 text-3xl text-maincolor dark:text-maincolor underline mb-12">Adquira já o seu</h1>
+        <h1 className="ml-8 text-3xl text-maincolor dark:text-maincolor underline mb-12 md:text-4xl md:ml-0">Adquira já o seu</h1>
       </div>
-      <div className="flex flex-col justify-center py-12">
-        <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12">Conta do BaltasBank</h1>
-        <h1 className="mt-12 mr-6 ml-12 text-4xl text-center">O controle financeiro na palma de sua mão!</h1>
+      <div className="flex flex-col justify-center py-12 md:flex md:justify-center md:items-center">
+        <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12 md:ml-0">BaltasBank</h1>
+        <h1 className="mt-12 mr-6 ml-12 text-4xl text-center md:ml-0">O controle financeiro na palma de sua mão!</h1>
+      </div>
+      <div className="bg-contentDark flex md:justify-center md:items-center">
+        <img
+          src="/baltas-bank-logo-reduzida.png"
+          className="h-32 saturate-200 my-5 mr-5 md:w-96 md:h-60"
+        />
+        <h1 className="mt-12 mr-6 ml-8 text-white md:mb-16">©2022 BaltasBank - Gustavo Baltazar</h1>
       </div>
     </>
   );

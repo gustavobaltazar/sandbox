@@ -10,9 +10,9 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-   
+
       <div className="md:flex md:justify-between my-4 ml-4 md:mr-12 md:items-center md:text-center">
-      <img
+        <img
           src="/baltas-bank-logo.png"
           className="h-56  pt-12 saturate-200 shrink-0"
         />
@@ -24,11 +24,10 @@ export const Navbar = () => {
         </div>
         <div
           className={`md:flex md:flex-row md:justify=center md:items-center md:mb-12 md:gap-2 bg-escure md:text-black md:bg-transparent text-white absolute text-2xl py-4 dark:bg-white
-                md:dark:bg-transparent md:dark:text-white md:h-0 dark:text-escure md:static left-0 w-screen md:w-auto ease-in ${
-                  open
-                    ? "top-36 h-screen z-40 flex flex-col justify-center items-center text-center gap-1 transition-all duration-[500ms]"
-                    : "top-[-490px] h-0 transition-all duration-[500ms] ease-out duration-[500ms]"
-                } `}
+                md:dark:bg-transparent md:dark:text-white md:h-0 dark:text-escure md:static left-0 w-screen md:w-auto ease-in ${open
+              ? "top-36 h-screen z-40 flex flex-col justify-center items-center text-center gap-1 transition-all duration-[500ms]"
+              : "top-[-490px] h-0 transition-all ease-out duration-[500ms]"
+            } `}
         >
           {theme === "light" ? (
             <MdDarkMode
