@@ -32,7 +32,7 @@ export const Content = () => {
           src="/baltas-bank-logo-reduzida.png"
           className="h-32 saturate-200 my-5 mr-5 md:w-96 md:h-60"
         />
-        <h1 className="mt-12 mr-6 ml-8 text-white md:mb-16">©2022 BaltasBank - Gustavo Baltazar</h1>
+        <h1 className="mt-12 mr-6 ml-8 text-white md:mb-16">©2022 BaltasBank - Autor: Gustavo Baltazar</h1>
       </div>
     </>
   );
