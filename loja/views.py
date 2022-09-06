@@ -3,9 +3,30 @@ from django.shortcuts import get_object_or_404
 # from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Cliente, Produto, Pedido
-from .serializer import ProdutoSerializer, ClienteSerializer, PedidoSerializer
+from .models import Cliente, Produto, Pedido, Avaliacao
+from .serializer import ProdutoSerializer, ClienteSerializer, PedidoSerializer, AvaliacaoSerializer
 from rest_framework import status
+from rest_framework import viewsets
+
+class AvaliacaoViewSet(viewsets.ModelViewSet):
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
+
+
+@api_view(['GET', 'POST'])
+def listar_avaliacao(request):
+    if request.method == 'GET':
+        queryset = Avaliacao.objects.all()
+        serializer = AvaliacaoSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'POST':
+        serializer = AvaliacaoSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else: 
+            return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET', 'POST'])
 def listar_produtos(request):

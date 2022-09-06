@@ -1,7 +1,7 @@
 from dataclasses import fields
 from decimal import Decimal
 from rest_framework import serializers
-from loja.models import Cliente, Pedido, Produto
+from loja.models import Cliente, Pedido, Produto, Avaliacao
 
 # class ProdutoSerializer(serializers.Serializer):
 #     id = serializers.IntegerField()
@@ -31,3 +31,9 @@ class PedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
         fields = ['id','dt_pedido', 'status_pagamento', 'cliente_pedido']
+
+class AvaliacaoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Avaliacao
+        # fields = '__all__'
+        fields = ['id', 'produto', 'nome', 'descricao', 'dt_avaliacao', 'estrelas']
