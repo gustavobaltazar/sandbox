@@ -49,3 +49,9 @@ class PedidoItem(models.Model):
     preco = models.DecimalField(max_digits=6, decimal_places=2)
     qtd = models.PositiveSmallIntegerField()
         
+class Avaliacao(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
+    dt_avaliacao = models.DateField(auto_now_add=True)
+    estrelas = models.PositiveSmallIntegerField()
