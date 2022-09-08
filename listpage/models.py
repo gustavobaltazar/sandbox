@@ -4,6 +4,7 @@ class Bosses(models.Model):
     name = models.CharField(max_length=70)
     location = models.CharField(max_length=255)
     boss_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    loot = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
