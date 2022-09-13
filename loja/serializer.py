@@ -22,6 +22,16 @@ class ProdutoSerializer(serializers.ModelSerializer):
     def calcular_taxa(self, produto : Produto):
         return produto.preco * Decimal(1.1)
 
+    def create(self, validated_data):
+        if self.validated_data['estoque'] < 0:
+            validated_data['estoque'] = 0
+            return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        if self.validated_data['estoque'] < 0:
+            validated_data['estoque'] = 0
+        return super().update(instance, validated_data)
+
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
