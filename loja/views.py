@@ -14,7 +14,7 @@ class AvaliacaoViewSet(viewsets.ModelViewSet):
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
 
-class ProdutoListar(ListCreateAPIView):
+class ListarProduto(ListCreateAPIView):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
@@ -45,19 +45,27 @@ class ProdutoDetalhe(RetrieveUpdateDestroyAPIView):
         produto.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET', 'POST'])
-def listar_avaliacao(request):
-    if request.method == 'GET':
-        queryset = Avaliacao.objects.all()
-        serializer = AvaliacaoSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
-        serializer = AvaliacaoSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else: 
-            return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+# @api_view(['GET', 'POST'])
+# def listar_avaliacao(request):
+#     if request.method == 'GET':
+#         queryset = Avaliacao.objects.all()
+#         serializer = AvaliacaoSerializer(queryset, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     elif request.method == 'POST':
+#         serializer = AvaliacaoSerializer(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         else: 
+#             return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+
+class ListarAvaliacao(ListCreateAPIView):
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
+
+class AvaliacaoDetalhe(RetrieveUpdateDestroyAPIView):
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
 
 
 # @api_view(['GET', 'POST'])
@@ -95,68 +103,83 @@ def listar_avaliacao(request):
 
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET', 'POST'])
-def listar_clientes(request):
-    if request.method == 'GET':
-        queryset = Cliente.objects.all()
-        serializer = ClienteSerializer(queryset, many=True)
-        return Response(serializer.data)
+class ListarCliente(ListCreateAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
 
-    elif request.method == 'POST':
-        serializer = ClienteSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_201_CREATED)
+class ClienteDetalhe(RetrieveUpdateDestroyAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
 
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+# @api_view(['GET', 'POST'])
+# def listar_clientes(request):
+#     if request.method == 'GET':
+#         queryset = Cliente.objects.all()
+#         serializer = ClienteSerializer(queryset, many=True)
+#         return Response(serializer.data)
 
-@api_view(['GET','PUT','DELETE'])
-def cliente_detalhe(request, id):
-    cliente = get_object_or_404(Cliente, pk=id)
-    if request.method == 'GET':
-        serializer = ClienteSerializer(cliente)
-        return Response(serializer.data)
-    elif request.method == 'PUT':
-        serializer = ClienteSerializer(Cliente, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_200_OK)
-    else:
-        cliente.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'POST':
+#         serializer = ClienteSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(status=status.HTTP_201_CREATED)
+
+#     else:
+#         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+# @api_view(['GET','PUT','DELETE'])
+# def cliente_detalhe(request, id):
+#     cliente = get_object_or_404(Cliente, pk=id)
+#     if request.method == 'GET':
+#         serializer = ClienteSerializer(cliente)
+#         return Response(serializer.data)
+#     elif request.method == 'PUT':
+#         serializer = ClienteSerializer(Cliente, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(status=status.HTTP_200_OK)
+#     else:
+#         cliente.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
         
+class ListarPedido(ListCreateAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
 
-@api_view(['GET', 'POST'])
-def listar_pedidos(request):
-    if request.method == 'GET':
-        queryset = Pedido.objects.all()
-        serializer = PedidoSerializer(queryset, many=True)
-        return Response(serializer.data)
+class PedidoDetalhe(RetrieveUpdateDestroyAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+    
+# @api_view(['GET', 'POST'])
+# def listar_pedidos(request):
+#     if request.method == 'GET':
+#         queryset = Pedido.objects.all()
+#         serializer = PedidoSerializer(queryset, many=True)
+#         return Response(serializer.data)
 
-    elif request.method == 'POST':
-        serializer = PedidoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_201_CREATED)
+#     elif request.method == 'POST':
+#         serializer = PedidoSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(status=status.HTTP_201_CREATED)
 
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+#     else:
+#         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def pedido_detalhe(request, id):
-    pedido = get_object_or_404(Pedido, pk=id)
+# @api_view(['GET', 'PUT', 'DELETE'])
+# def pedido_detalhe(request, id):
+#     pedido = get_object_or_404(Pedido, pk=id)
 
-    if request.method == 'GET':
-        serializer = PedidoSerializer(Pedido)
-        return Response(serializer.data)
+#     if request.method == 'GET':
+#         serializer = PedidoSerializer(Pedido)
+#         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = PedidoSerialzier(Pedido, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_200_OK)
-    else:
-        pedido.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'PUT':
+#         serializer = PedidoSerialzier(Pedido, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(status=status.HTTP_200_OK)
+#     else:
+#         pedido.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
