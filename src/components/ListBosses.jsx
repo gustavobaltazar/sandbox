@@ -1,19 +1,29 @@
 import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 export const ListBosses = () => {
+  const [apiresult, setApiresult] = useState([{}])
+  const base = "http://127.0.0.1:8000";
 
-  const api = axios.create({
-    baseURL: `http://127.0.0.1:8000/list/boss_show/list_bosses/`
-  })
-  
-  function Api(){
-    api.get('/').then(res => {
-      console.log(res.data)
-    })
+  const FetchAxios = () => {
+    axios.get("http://127.0.0.1:8000/list/boss_show/list_bosses/")
+      .then(response => {
+        setApiresult(response.data)
+      })
   }
-  return (
-    <>
-      <h1 className="text-red-500">bobo</h1>
 
-    </>
+  useEffect(() => {
+    FetchAxios()
+  }, [])
+
+  return (
+    <div>
+      {apiresult.map((item, index) => (
+        <div key={index}>
+          {item.name} = {item.location}
+          <img src={base+item.boss_image} />
+        </div>
+      ))}
+    </div>
   )
 }
