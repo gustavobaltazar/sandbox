@@ -29,6 +29,7 @@ export const Navbar = () => {
               : "top-[-490px] h-0 transition-all ease-out duration-[500ms]"
             } `}
         >
+          
           {theme === "light" ? (
             <MdDarkMode
               size={30}
@@ -47,13 +48,13 @@ export const Navbar = () => {
               <Links linkName="Home" />
             </div>
             <div className="border-b-2 w-full md:border-none md:select-none">
-              <Links linkName="Contact" />
+              <Links linkName="Contato" />
             </div>
             <div className="border-b-2 w-full md:border-none md:select-none">
-              <Links linkName="About" />
+              <Links linkName="Sobre" />
             </div>
             <div className="border-b-2 w-full md:border-none md:select-none">
-              <Links linkName="Wallet" />
+              <Links linkName="Carteira" />
             </div>
           </div>
 

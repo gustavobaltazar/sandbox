@@ -16,7 +16,7 @@ export const Content = () => {
 
       <div className="flex flex-col bg-contentDark gap-8 md:flex md:justify-center md:items-center" id="content">
         <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12 md:ml-0 md:text-6xl">Cartão de Crédito</h1>
-        <h1 className="ml-20 text-black dark:text-white text-4xl md:ml-0">Gratuito, Prático e moderno</h1>
+        <h1 className="ml-20 text-white dark:text-white text-4xl md:ml-0">Gratuito, Prático e moderno</h1>
         <img
           src="/credit-card.png"
           className="h-15 saturate-200 ml-5 my-5 mr-5 md:w-96 md:h-60"

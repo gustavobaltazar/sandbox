@@ -1,9 +1,9 @@
 import { MdDarkMode } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 import { useTheme } from "../DarkmodeControl/Darkmode";
-import { CardLogin } from "../Cards/CardLogin";
+import { CardRegister } from "../Cards/CardRegister";
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const { theme, setTheme } = useTheme();
   return (
     <>
@@ -28,7 +28,7 @@ export const LoginPage = () => {
         </div>
       </div>
       <div className="centralize px-10">
-        <CardLogin />
+        <CardRegister />
       </div>
     </>
   );
