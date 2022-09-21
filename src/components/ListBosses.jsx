@@ -10,6 +10,7 @@ export const ListBosses = () => {
       .then(response => {
         setApiresult(response.data)
       })
+      console.log(apiresult)
   }
 
   useEffect(() => {
@@ -17,18 +18,24 @@ export const ListBosses = () => {
   }, [])
 
   return (
-    <div className="flex h-screen justify-center items-center bg-slate-800 gap-32">
-      {apiresult.map((item, index) => (
-        <div className="bg-white w-96" key={index}>
-          <img className="w-96 h-96" src={base + item.boss_image} />
-          <div className="text-center text-3xl mt-4">
-            Name:  {item.name}
+    <div className="flex flex-col h-screen justify-center items-center bg-slate-800">
+      <div className="text-6xl text-white mb-4">Elden Wiki</div>
+      <div className="flex gap-32">
+        {apiresult.map((item, index) => (
+          <div className="bg-white w-96" key={index}>
+            <img className="w-96 h-96" src={base + item.boss_image} />
+            <div className="text-center text-3xl mt-4">
+              Name:  {item.name}
+            </div>
+            <div className="text-center text-2xl mb-4">
+              Location: {item.location}
+            </div>
+            <div className="text-center text-2xl">
+              Loot: {item.loot}
+            </div>
           </div>
-          <div className="text-center text-2xl mt-1">
-            Location: {item.location}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
