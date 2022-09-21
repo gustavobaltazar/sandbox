@@ -17,11 +17,16 @@ export const ListBosses = () => {
   }, [])
 
   return (
-    <div>
+    <div className="flex h-screen justify-center items-center bg-slate-800 gap-32">
       {apiresult.map((item, index) => (
-        <div key={index}>
-          {item.name} = {item.location}
-          <img src={base+item.boss_image} />
+        <div className="bg-white w-96" key={index}>
+          <img className="w-96 h-96" src={base + item.boss_image} />
+          <div className="text-center text-3xl mt-4">
+            Name:  {item.name}
+          </div>
+          <div className="text-center text-2xl mt-1">
+            Location: {item.location}
+          </div>
         </div>
       ))}
     </div>
