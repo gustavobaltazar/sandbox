@@ -5,6 +5,7 @@ import './index.css'
 import { DarkMode } from './components/DarkmodeControl/Darkmode'
 import { LoginPage } from './components/LoginPage/LoginPage'
 import { RegisterPage } from './components/RegisterPage/RegisterPage'
+import { ProfilePage } from './components/ProfilePage/ProfilePage'
 import {
   BrowserRouter,
   Routes,
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/" element={<App />} />
       <Route path="/LoginPage" element={<DarkMode> <LoginPage /> </DarkMode>} />
       <Route path="/RegisterPage" element={<DarkMode> <RegisterPage /> </DarkMode>} />
+      <Route path="/ProfilePage" element={<DarkMode> <ProfilePage/> </DarkMode>}/>
     </Routes>
   </BrowserRouter>
 )

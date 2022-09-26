@@ -25,7 +25,7 @@ export const Content = () => {
       </div>
       <div className="flex flex-col justify-center py-12 md:flex md:justify-center md:items-center">
         <h1 className="text-maincolor dark:text-maincolor text-5xl ml-8 mr-2 tracking-wider mt-12 md:ml-0">BaltasBank</h1>
-        <h1 className="mt-12 mr-6 ml-12 text-4xl text-center md:ml-0">O controle financeiro na palma de sua mão!</h1>
+        <h1 className="mt-12 mr-6 ml-12 text-4xl text-center md:ml-0 md:mb-16">O controle financeiro na palma de sua mão!</h1>
       </div>
       <div className="bg-contentDark flex md:justify-center md:items-center">
         <img

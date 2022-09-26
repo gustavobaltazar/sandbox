@@ -54,7 +54,7 @@ export const Navbar = () => {
               <Links linkName="Sobre" />
             </div>
             <div className="border-b-2 w-full md:border-none md:select-none">
-              <Links linkName="Carteira" />
+              <Links linkName="Carteira" href="/ProfilePage" />
             </div>
           </div>
 
