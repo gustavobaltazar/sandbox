@@ -49,14 +49,16 @@ class Cartao(models.Model):
         return self.numero_cartao 
 class Conta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    carteira = models.DecimalField(max_digits=7, decimal_places=2)
+    carteira = models.DecimalField(max_digits=20, decimal_places=5)
     cartao_conta = models.ForeignKey(Cartao, related_name='Cartao', on_delete=models.CASCADE)
     
     def __str__(self) -> str:
         return self.cliente
 
 class Fatura(models.Model):
-    pass
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    valor_pago = models.DecimalField(max_digits=20, decimal_places=2)
+    parcelas = models.IntegerField()
 
 class Transacao(models.Model):
     pass
