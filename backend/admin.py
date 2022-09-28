@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Usuario
+
+class UsuarioLista(admin.ModelAdmin):
+    model = Usuario
+    fields = ['all']
+
+admin.site.register(Usuario, UsuarioLista)
