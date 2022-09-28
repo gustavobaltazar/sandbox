@@ -2,11 +2,10 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container:{
-        flex:0.8,
+        flex:2,
         backgroundColor:'#ff0',
         alignItems:'center',
         justifyContent:'center',
-        width:'100%', 
       },
       caixa1:{
         backgroundColor:'#0f0',

@@ -4,6 +4,7 @@ import Body from './components/Body'
 import Footer from './components/Footer'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Home from './components/Home';
 import { Screen } from 'react-native-screens';
 
 const Pilha=createStackNavigator()
@@ -13,19 +14,24 @@ export default function Routers() {
       <NavigationContainer>
         <Pilha.Navigator>
           <Pilha.Screen 
+            name='Home'          
+            component={Home}
+            options={{headerShown:false}}
+          />
+          <Pilha.Screen 
             name='Header'          
             component={Header}
-            options={{title: 'Cabeçalho'}}
+            options={{headerShown:false}}
           />
           <Pilha.Screen 
             name='Body'          
             component={Body}
-            options={{title: 'Corpo'}}
+            options={{headerShown:false}}
           />
           <Pilha.Screen 
             name='Footer'          
             component={Footer}
-            options={{title: 'Rodapé'}}
+            options={{headerShown:false}}
           />
         </Pilha.Navigator>
       </NavigationContainer>

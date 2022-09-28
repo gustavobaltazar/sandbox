@@ -4,17 +4,10 @@ import Body from '../Body'
 
 export default function Header({navigation}){
     return(
-        <View style={{flex:0.2}}>
+        <View style={Styles.container}>
             <Text style={Styles.txt}>
                 Header
             </Text>
-            <View>
-                <Button 
-                    title='Body'
-                    onPress={()=>navigation.navigate(Body)}
-                />
-
-            </View>
         </View>
     )
 }
