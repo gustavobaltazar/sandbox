@@ -18,6 +18,9 @@ class Usuario(models.Model):
     senha = models.CharField(max_length=100)
     tipo_conta = models.CharField(max_length=1, choices=TIPOS_CONTA)
 
+    def __str__(self) -> str:
+        return self.cpf
+
 
 class Cliente(models.Model):
     SEXO_MASCULINO = 'M'
@@ -28,6 +31,7 @@ class Cliente(models.Model):
         (SEXO_FEMININO, 'Female'),
     ]
     nome = models.CharField(max_length=50)
+    sobrenome = models.CharField(max_length=50)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     idade = models.IntegerField()
     sexo = models.CharField(max_length=1, choices=SEXO_TIPOS)

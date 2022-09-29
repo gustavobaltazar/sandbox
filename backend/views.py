@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework import viewsets
 from rest_framework import status
-from backend.models import Usuario
-from backend.serializer import UsuarioSerializer
+from backend.models import Usuario, Cliente
+from backend.serializer import UsuarioSerializer, ClienteSerializer
 from rest_framework.response import Response
 
 
@@ -18,11 +18,10 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         
         if len(cpf) > 11:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-            
+
         senha = request.data['senha']
         tipo_conta = request.data['tipo_conta']
         senha_encriptada = make_password(senha)
-        print(senha_encriptada)
         # check_senha = check_password(
         #     senha, senha_encriptada)
         # print(check_senha)
@@ -30,3 +29,10 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         data.save()
 
         return Response(status=status.HTTP_201_CREATED)
+
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
+    # def create(self, request, *args, **kwargs):
+    #     return super().create(request, *args, **kwargs)
