@@ -8,7 +8,7 @@ class Usuario(models.Model):
     GOLD = 'G'
     PLATINUM = 'P'
 
-    TIPOS_CARTAO = [
+    TIPOS_CONTA = [
         (NORMAL, 'Normal'),
         (GOLD, 'Gold'),
         (PLATINUM, 'Platinum'),
@@ -16,7 +16,7 @@ class Usuario(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     cpf = models.CharField(max_length=15)
     senha = models.CharField(max_length=100)
-    tipo_conta = models.CharField(max_length=1, choices=TIPOS_CARTAO)
+    tipo_conta = models.CharField(max_length=1, choices=TIPOS_CONTA)
 
 
 class Cliente(models.Model):
