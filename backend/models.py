@@ -38,7 +38,8 @@ class Cliente(models.Model):
     sexo = models.CharField(max_length=1, choices=SEXO_TIPOS)
 
     def __str__(self) -> str:
-        return self.usuario
+        return self.nome
+        
 
 
 class Endereco(models.Model):
