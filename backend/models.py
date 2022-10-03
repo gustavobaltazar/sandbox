@@ -13,6 +13,7 @@ class Usuario(models.Model):
         (GOLD, 'Gold'),
         (PLATINUM, 'Platinum'),
     ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     cpf = models.CharField(max_length=15)
     senha = models.CharField(max_length=100)
@@ -20,7 +21,6 @@ class Usuario(models.Model):
 
     def __str__(self) -> str:
         return self.cpf
-
 
 class Cliente(models.Model):
     SEXO_MASCULINO = 'M'
@@ -30,6 +30,7 @@ class Cliente(models.Model):
         (SEXO_MASCULINO, 'Male'),
         (SEXO_FEMININO, 'Female'),
     ]
+
     nome = models.CharField(max_length=50)
     sobrenome = models.CharField(max_length=50)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)

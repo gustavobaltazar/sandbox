@@ -15,9 +15,9 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         cpf = request.data['cpf']
-        
-        if len(cpf) > 11:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if len(cpf) > 11 or len(cpf) <0:
+            return Response({'detalhe': 'Número de dígitos inválido!'}, status=status.HTTP_401_UNAUTHORIZED)
 
         senha = request.data['senha']
         tipo_conta = request.data['tipo_conta']
@@ -28,11 +28,20 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         data = Usuario(cpf=cpf, senha=senha_encriptada, tipo_conta=tipo_conta)
         data.save()
 
-        return Response(status=status.HTTP_201_CREATED)
+        return Response({'detalhe': 'Usuario criadocom sucesso!'}, status=status.HTTP_201_CREATED)
+
 
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
-    # def create(self, request, *args, **kwargs):
-    #     return super().create(request, *args, **kwargs)
+    def create(self, request, *args, **kwargs):
+        nome = request.data['nome']
+        sobrenome = request.data['sobrenome']
+        usuario = Usuario.objects.get()
+        idade = request.data['idade']
+        sexo = request.data['sexo']
+        data = Cliente(nome=nome, sobrenome=sobrenome,
+                       usuario=usuario, idade=idade, sexo=sexo)
+        data.save()
+        return Response({'detalhe': 'Cliente adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
