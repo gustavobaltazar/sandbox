@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework import viewsets
 from rest_framework import status
-from backend.models import Usuario, Cliente, Cartao
-from backend.serializer import CartaoSerializer, UsuarioSerializer, ClienteSerializer
+from backend.models import Conta, Usuario, Cliente, Cartao
+from backend.serializer import CartaoSerializer, ContaSerializer, UsuarioSerializer, ClienteSerializer
 from rest_framework.response import Response
 
 
@@ -57,4 +57,11 @@ class CartaoViewSet(viewsets.ModelViewSet):
         validade = request.data['validade']
         data = Cartao(numero_cartao=numero_cartao, cvv=cvv, limite=limite, validade=validade)
         data.save()
+        return Response({'detalhe': 'Cartão adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
+
+class ContaViewSet(viewsets.ModelViewSet):
+    queryset = Conta.objects.all()
+    serializer_class = ContaSerializer
+
+    def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
