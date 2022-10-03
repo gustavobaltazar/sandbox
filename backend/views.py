@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework import viewsets
 from rest_framework import status
-from backend.models import Usuario, Cliente
-from backend.serializer import UsuarioSerializer, ClienteSerializer
+from backend.models import Usuario, Cliente, Cartao
+from backend.serializer import CartaoSerializer, UsuarioSerializer, ClienteSerializer
 from rest_framework.response import Response
 
 
@@ -45,3 +45,16 @@ class ClienteViewSet(viewsets.ModelViewSet):
                        usuario=usuario, idade=idade, sexo=sexo)
         data.save()
         return Response({'detalhe': 'Cliente adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
+
+class CartaoViewSet(viewsets.ModelViewSet):
+    queryset = Cartao.objects.all()
+    serializer_class = CartaoSerializer
+
+    def create(self, request, *args, **kwargs):
+        numero_cartao = request.data['numero_cartao']
+        cvv = request.data['cvv']
+        limite = request.data['limite']
+        validade = request.data['validade']
+        data = Cartao(numero_cartao=numero_cartao, cvv=cvv, limite=limite, validade=validade)
+        data.save()
+        return super().create(request, *args, **kwargs)
