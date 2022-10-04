@@ -76,7 +76,7 @@ class Conta(models.Model):
     conta_ativa = models.CharField(max_length=1, choices=CONTA_ATIVA)
 
     def __str__(self) -> str:
-        return self.cliente
+        return self.conta_ativa
 
 
 class Fatura(models.Model):

@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework import viewsets
 from rest_framework import status
-from backend.models import Conta, Usuario, Cliente, Cartao
-from backend.serializer import CartaoSerializer, ContaSerializer, UsuarioSerializer, ClienteSerializer
+from backend.models import Conta, Endereco, Usuario, Cliente, Cartao
+from backend.serializer import CartaoSerializer, ContaSerializer, EnderecoSerializer, UsuarioSerializer, ClienteSerializer
 from rest_framework.response import Response
 
 
@@ -16,7 +16,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         cpf = request.data['cpf']
 
-        if len(cpf) > 11 or len(cpf) <0:
+        if len(cpf) > 11 or len(cpf) < 0:
             return Response({'detalhe': 'Número de dígitos inválido!'}, status=status.HTTP_401_UNAUTHORIZED)
 
         senha = request.data['senha']
@@ -46,6 +46,20 @@ class ClienteViewSet(viewsets.ModelViewSet):
         data.save()
         return Response({'detalhe': 'Cliente adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
 
+class EnderecoViewSet(viewsets.ModelViewSet):
+    queryset = Endereco.objects.all()
+    serializer_class = EnderecoSerializer
+
+    def create(self, request, *args, **kwargs):
+        cliente = Cliente.objects.get()
+        cidade = request.data['cidade']
+        bairro = request.data['bairro']
+        rua = request.data['rua']
+        data = Endereco(cliente=cliente, cidade=cidade, bairro=bairro, rua=rua)
+        data.save()
+        return Response({'detalhe': 'Endereço adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
+
+
 class CartaoViewSet(viewsets.ModelViewSet):
     queryset = Cartao.objects.all()
     serializer_class = CartaoSerializer
@@ -55,13 +69,22 @@ class CartaoViewSet(viewsets.ModelViewSet):
         cvv = request.data['cvv']
         limite = request.data['limite']
         validade = request.data['validade']
-        data = Cartao(numero_cartao=numero_cartao, cvv=cvv, limite=limite, validade=validade)
+        data = Cartao(numero_cartao=numero_cartao, cvv=cvv,
+                      limite=limite, validade=validade)
         data.save()
         return Response({'detalhe': 'Cartão adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
+
 
 class ContaViewSet(viewsets.ModelViewSet):
     queryset = Conta.objects.all()
     serializer_class = ContaSerializer
 
     def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
+        cliente = Cliente.objects.get()
+        carteira = request.data['carteira']
+        cartao_conta = Cartao.objects.get()
+        conta_ativa = request.data['conta_ativa']
+        data = Conta(cliente=cliente, carteira=carteira,
+                     cartao_conta=cartao_conta, conta_ativa=conta_ativa)
+        data.save()
+        return Response({'detalhe': 'Conta criada com sucesso!'}, status=status.HTTP_201_CREATED)
