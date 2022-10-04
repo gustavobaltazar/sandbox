@@ -54,8 +54,9 @@ class EnderecoViewSet(viewsets.ModelViewSet):
         cliente = Cliente.objects.get()
         cidade = request.data['cidade']
         bairro = request.data['bairro']
+        estado = request.data['estado']
         rua = request.data['rua']
-        data = Endereco(cliente=cliente, cidade=cidade, bairro=bairro, rua=rua)
+        data = Endereco(cliente=cliente, cidade=cidade, estado=estado, bairro=bairro, rua=rua)
         data.save()
         return Response({'detalhe': 'Endereço adicionado com sucesso!'}, status=status.HTTP_201_CREATED)
 
@@ -80,7 +81,7 @@ class ContaViewSet(viewsets.ModelViewSet):
     serializer_class = ContaSerializer
 
     def create(self, request, *args, **kwargs):
-        cliente = Cliente.objects.get()
+        cliente = Cliente.objects.get(id)
         carteira = request.data['carteira']
         cartao_conta = Cartao.objects.get()
         conta_ativa = request.data['conta_ativa']

@@ -55,10 +55,16 @@ class Cliente(models.Model):
         return self.nome
         
 class Endereco(models.Model):
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False)
     cliente = models.ForeignKey(Cliente, on_delete=models.DO_NOTHING)
     cidade = models.CharField(max_length=100)
+    estado = models.CharField(max_length=100)
     bairro = models.CharField(max_length=100)
     rua = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.cidade
 
 class Conta(models.Model):
     ATIVO = 'A'
