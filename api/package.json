@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
+    "prisma": "^4.9.0",
     "tsx": "^3.12.2"
   }
 }
