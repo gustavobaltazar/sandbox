@@ -11,11 +11,20 @@ datasource db {
 }
 
 model Anime {
-  id     String  @id @default(cuid())
-  name   String
-  year   String
-  season String
-  genre  String
-  score  Float
-  userId String?
+  id          String @id @default(cuid())
+  name        String
+  year        String
+  season      String
+  genre       String
+  score       Float
+  favoritedBy User[]
+}
+
+model User {
+  id             String  @id @default(cuid())
+  name           String
+  email          String  @unique
+  age            Int
+  passwordHash   String
+  favoriteAnimes Anime[]
 }
