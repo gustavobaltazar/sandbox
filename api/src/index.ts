@@ -81,6 +81,58 @@ app.post("/user/session", async (req, res) => {
   if (!validPassword)
     return res.status(400).json({ message: "Invalid password" });
 
+  const newSession = await prisma.session.create({
+    data: {
+      userId: user.id,
+    },
+  });
+
+  const newSessionId = newSession.sessionId;
+
+  return res.status(200).json({ newSessionId });
+});
+
+app.delete("/user/session", async (req, res) => {
+  const { sessionId } = z
+    .object({
+      sessionId: z.string(),
+    })
+    .parse(req.body);
+
+  try {
+    await prisma.session.delete({
+      where: {
+        sessionId,
+      },
+    });
+    return res.status(200).json({ message: "Logout succesfully" });
+  } catch (err) {
+    return res.status(500).json({ message: "Something went wrong!" });
+  }
+});
+
+app.post("/user/me", async (req, res) => {
+  const { sessionId } = z
+    .object({
+      sessionId: z.string(),
+    })
+    .parse(req.body);
+
+  const session = await prisma.session.findUnique({
+    where: {
+      sessionId,
+    },
+  });
+
+  if (!session) return res.status(404).json({ message: "Session not found" });
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: session.userId,
+    },
+  });
+  if (!user) return res.status(404).json({ message: "User not found" });
+
   return res.status(200).json({ user });
 });
 
