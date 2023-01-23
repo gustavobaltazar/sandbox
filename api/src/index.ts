@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { z } from "zod";
 import crypto from "crypto";
@@ -37,6 +37,64 @@ app.post("/anime", async (req, res) => {
     return res.status(400).json({ message: "Bad request error", error });
   }
 });
+
+const addAnimeFavorite = z.object({
+  animeId: z.string()
+})
+
+const isAuthenticatedScheme = z.object({
+  sessionId: z.string(),
+})
+
+const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { sessionId } = isAuthenticatedScheme.parse(req.body);
+    const session = await prisma.session.findUnique({
+      where: {
+        sessionId,
+      },
+    });
+  
+    if (!session) return res.status(404).json({ message: "Session not found" });
+  
+    const user = await prisma.user.findUnique({
+      where: {
+        id: session.userId,
+      },
+    });
+    if (!user) return res.status(404).json({ message: "User not found" });
+    req.user = user;
+    next()
+  } catch (error) {
+    return res.status(400).json({ message: "UNATHORIZED" })
+  }
+};
+
+app.post("/user/favorite/anime", isAuthenticated, async (req, res) => {
+  const { animeId } = addAnimeFavorite.parse(req.body);
+
+  try {
+    const user = await prisma.user.update({
+      where: {
+        id: req.user.id
+      },
+      data: {
+        favoriteAnimes: {
+          connect: {
+            id: animeId
+          }
+        }
+      },
+      include: {
+        favoriteAnimes: true
+      }
+    });
+
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res.status(400).json({ message: "Cannot add anime to user favorite list" }); 
+  }
+})
 
 const createUserScheme = z.object({
   name: z.string(),
@@ -110,29 +168,8 @@ app.delete("/user/session", async (req, res) => {
   }
 });
 
-app.post("/user/me", async (req, res) => {
-  const { sessionId } = z
-    .object({
-      sessionId: z.string(),
-    })
-    .parse(req.body);
-
-  const session = await prisma.session.findUnique({
-    where: {
-      sessionId,
-    },
-  });
-
-  if (!session) return res.status(404).json({ message: "Session not found" });
-
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session.userId,
-    },
-  });
-  if (!user) return res.status(404).json({ message: "User not found" });
-
-  return res.status(200).json({ user });
+app.post("/user/me", isAuthenticated, async (req, res) => {
+  return res.status(200).json({ user: req.user });
 });
 
 app.listen(4000, () => {
