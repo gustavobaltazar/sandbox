@@ -28,8 +28,7 @@ app.get("/anime", async (req, res) => {
 
 app.post("/anime", async (req, res) => {
   try {
-    const { name, year, season, genre, score } = animeScheme.parse(req.body);
-    const newAnime = { name, year, season, genre, score };
+    const newAnime = animeScheme.parse(req.body);
     const animes = await prisma.anime.create({
       data: newAnime,
     });
@@ -79,7 +78,7 @@ app.post("/user/session", async (req, res) => {
   const validPassword = password === user.passwordHash;
 
   if (!validPassword)
-    return res.status(400).json({ message: "Invalid password" });
+    return res.status(401).json({ message: "Invalid password" });
 
   const newSession = await prisma.session.create({
     data: {
