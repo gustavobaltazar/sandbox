@@ -3,6 +3,7 @@ import cors from "cors";
 import { z } from "zod";
 import crypto from "crypto";
 import { prisma } from "./utils/prisma";
+import { isAuthenticated, isAuthenticatedRequest } from "./utils/middleware";
 
 const app = express();
 
@@ -15,6 +16,7 @@ const animeScheme = z.object({
   season: z.string(),
   genre: z.string(),
   score: z.number(),
+  synopsis: z.string().max(500),
 });
 
 app.get("/", (req, res) => {
@@ -22,7 +24,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/anime", async (req, res) => {
-  const allAnimes = await prisma.anime.findMany();
+  const allAnimes = await prisma.anime.findMany({
+    include: {
+      Character: true,
+    },
+  });
   return res.status(200).json({ animes: allAnimes });
 });
 
@@ -38,63 +44,111 @@ app.post("/anime", async (req, res) => {
   }
 });
 
-const addAnimeFavorite = z.object({
-  animeId: z.string()
-})
+const animeCharacterScheme = z.object({
+  name: z.string(),
+  animeId: z.string(),
+});
 
-const isAuthenticatedScheme = z.object({
-  sessionId: z.string(),
-})
-
-const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { sessionId } = isAuthenticatedScheme.parse(req.body);
-    const session = await prisma.session.findUnique({
-      where: {
-        sessionId,
-      },
-    });
-  
-    if (!session) return res.status(404).json({ message: "Session not found" });
-  
-    const user = await prisma.user.findUnique({
-      where: {
-        id: session.userId,
-      },
-    });
-    if (!user) return res.status(404).json({ message: "User not found" });
-    req.user = user;
-    next()
-  } catch (error) {
-    return res.status(400).json({ message: "UNATHORIZED" })
+app.post("/anime/character", async (req, res) => {
+  function isCreateCharacter(
+    characterInput: Zimbas
+  ): characterInput is CreateCharacter {
+    return "characterName" in characterInput;
   }
+  const characterInput = addAnimeCharacterScheme.parse(req.body);
+  try {
+    let anime;
+    if (isCreateCharacter(characterInput)) {
+      anime = await prisma.anime.update({
+        where: {
+          id: characterInput.animeId,
+        },
+        data: {
+          Character: {
+            create: {
+              name: characterInput.characterName,
+            },
+          },
+        },
+        include: {
+          Character: true,
+        },
+      });
+    } else {
+      anime = await prisma.anime.update({
+        where: {
+          id: characterInput.animeId,
+        },
+        data: {
+          Character: {
+            connect: {
+              id: characterInput.characterId,
+            },
+          },
+        },
+        include: {
+          Character: true,
+        },
+      });
+    }
+    return res.status(200).json({ anime });
+  } catch (error) {
+    return res.status(400).json({ message: "Cannot add character!", error });
+  }
+});
+
+const addAnimeFavoriteScheme = z.object({
+  animeId: z.string(),
+});
+
+const addAnimeCharacterScheme = z
+  .object({
+    characterId: z.string(),
+    animeId: z.string(),
+  })
+  .or(
+    z.object({
+      characterName: z.string(),
+      animeId: z.string(),
+    })
+  );
+type Zimbas = z.infer<typeof addAnimeCharacterScheme>;
+type CreateCharacter = {
+  characterName: string;
+  animeId: string;
 };
 
-app.post("/user/favorite/anime", isAuthenticated, async (req, res) => {
-  const { animeId } = addAnimeFavorite.parse(req.body);
+app.post(
+  "/user/favorite/anime",
+  isAuthenticated,
+  async (req: isAuthenticatedRequest, res) => {
+    const { animeId } = addAnimeFavoriteScheme.parse(req.body);
 
-  try {
-    const user = await prisma.user.update({
-      where: {
-        id: req.user.id
-      },
-      data: {
-        favoriteAnimes: {
-          connect: {
-            id: animeId
-          }
-        }
-      },
-      include: {
-        favoriteAnimes: true
-      }
-    });
+    try {
+      const user = await prisma.user.update({
+        where: {
+          id: req.user?.id,
+        },
+        data: {
+          favoriteAnimes: {
+            connect: {
+              id: animeId,
+            },
+          },
+        },
+        include: {
+          favoriteAnimes: true,
+        },
+      });
 
-    return res.status(200).json({ user });
-  } catch (error) {
-    return res.status(400).json({ message: "Cannot add anime to user favorite list" }); 
+      return res.status(200).json({ user });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ message: "Cannot add anime to user favorite list" });
+    }
   }
-})
+);
 
 const createUserScheme = z.object({
   name: z.string(),
@@ -168,9 +222,13 @@ app.delete("/user/session", async (req, res) => {
   }
 });
 
-app.post("/user/me", isAuthenticated, async (req, res) => {
-  return res.status(200).json({ user: req.user });
-});
+app.post(
+  "/user/me",
+  isAuthenticated,
+  async (req: isAuthenticatedRequest, res) => {
+    return res.status(200).json({ user: req.user });
+  }
+);
 
 app.listen(4000, () => {
   console.log("listening on port 4000");

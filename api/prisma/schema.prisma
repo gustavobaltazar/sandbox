@@ -11,21 +11,32 @@ datasource db {
 }
 
 model Anime {
-  id          String @id @default(cuid())
+  id          String      @id @default(cuid())
   name        String
   year        String
   season      String
   genre       String
   score       Float
+  synopsis    String
+  
   favoritedBy User[]
+  Character   Character[]
+}
+
+model Character {
+  id      String @id @default(cuid())
+  name    String
+  // animeList Anime  @relation(fields: [animeId], references: [id])
+  // animeId String
+  animes Anime[]
 }
 
 model User {
-  id             String    @id @default(cuid())
-  name           String
-  email          String    @unique
-  age            Int
-  passwordHash   String
+  id           String @id @default(cuid())
+  name         String
+  email        String @unique
+  age          Int
+  passwordHash String
 
   favoriteAnimes Anime[]
   session        Session[]
@@ -35,5 +46,5 @@ model Session {
   sessionId String @id @default(cuid())
   userId    String
 
-  user      User   @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 }
