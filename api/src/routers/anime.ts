@@ -13,23 +13,6 @@ const animeScheme = z.object({
   synopsis: z.string().max(500),
 });
 
-const addAnimeCharacterScheme = z
-  .object({
-    characterId: z.string(),
-    animeId: z.string(),
-  })
-  .or(
-    z.object({
-      characterName: z.string(),
-      animeId: z.string(),
-    })
-  );
-type Zimbas = z.infer<typeof addAnimeCharacterScheme>;
-type CreateCharacter = {
-  characterName: string;
-  animeId: string;
-};
-
 router.get("/anime", async (req, res) => {
   const allAnimes = await prisma.anime.findMany({
     include: {
@@ -64,13 +47,28 @@ router.get("/anime/rank", async (req, res) => {
   }
 });
 
+const createAnimeCharacterScheme = z.object({
+  characterName: z.string(),
+  animeId: z.string(),
+})
+
+const addExistingAnimeCharacterScheme = z.object({
+  characterId: z.string(),
+  animeId: z.string(),
+})
+
+const animeCharacterRouteScheme = createAnimeCharacterScheme.or(
+  addExistingAnimeCharacterScheme
+);
+
+type AnimeCharacterRoute = z.infer<typeof animeCharacterRouteScheme>;
+type CreateCharacter = z.infer<typeof createAnimeCharacterScheme>;
+
 router.post("/anime/character", async (req, res) => {
-  function isCreateCharacter(
-    characterInput: Zimbas
-  ): characterInput is CreateCharacter {
-    return "characterName" in characterInput;
+  function isCreateCharacter(input: AnimeCharacterRoute): input is CreateCharacter {
+    return "characterName" in input;
   }
-  const characterInput = addAnimeCharacterScheme.parse(req.body);
+  const characterInput = addExistingAnimeCharacterScheme.parse(req.body);
   try {
     let anime;
     if (isCreateCharacter(characterInput)) {
