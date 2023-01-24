@@ -11,21 +11,22 @@ datasource db {
 }
 
 model Anime {
-  id          String      @id @default(cuid())
-  name        String
-  year        String
-  season      String
-  genre       String
-  score       Float
-  synopsis    String
-  
-  favoritedBy User[]
-  Character   Character[]
+  id       String @id @default(cuid())
+  name     String
+  year     String
+  season   String
+  genre    String
+  score    Float
+  synopsis String
+
+  favoritedBy   User[]
+  character     Character[]
+  scoresByUsers AnimeScore[]
 }
 
 model Character {
-  id      String @id @default(cuid())
-  name    String
+  id     String  @id @default(cuid())
+  name   String
   // animeList Anime  @relation(fields: [animeId], references: [id])
   // animeId String
   animes Anime[]
@@ -40,6 +41,16 @@ model User {
 
   favoriteAnimes Anime[]
   session        Session[]
+  scoredAnimes   AnimeScore[]
+}
+
+model AnimeScore {
+  id      String @id @default(cuid())
+  animeId String
+  userId  String
+  score   Float
+  Anime   Anime  @relation(fields: [animeId], references: [id])
+  User    User   @relation(fields: [userId], references: [id])
 }
 
 model Session {

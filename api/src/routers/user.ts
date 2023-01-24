@@ -121,4 +121,38 @@ router.post(
   }
 );
 
+const animeScoreScheme = z.object({
+  animeId: z.string(),
+  score: z.number(),
+});
+
+router.post(
+  "/user/score/anime",
+  isAuthenticated,
+  async (req: isAuthenticatedRequest, res) => {
+    const {animeId, score} = animeScoreScheme.parse(req.body);
+    if (!req.user) {
+      return res.status(500).json({ err: "INTERNAL SERVER ERROR" });
+    }
+
+    try {
+      const updatedAnime = await prisma.anime.update({
+        where: {
+          id: animeId
+        },
+        data: {
+          scoresByUsers: {
+            create: {
+              score,
+              userId: req.user.id,
+            }
+          }
+        }
+      });
+    } catch (error) {
+      
+    }
+  }
+);
+
 export default { router };

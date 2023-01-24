@@ -16,7 +16,7 @@ const animeScheme = z.object({
 router.get("/anime", async (req, res) => {
   const allAnimes = await prisma.anime.findMany({
     include: {
-      Character: true,
+      character: true,
     },
   });
   return res.status(200).json({ animes: allAnimes });
@@ -77,14 +77,14 @@ router.post("/anime/character", async (req, res) => {
           id: characterInput.animeId,
         },
         data: {
-          Character: {
+          character: {
             create: {
               name: characterInput.characterName,
             },
           },
         },
         include: {
-          Character: true,
+          character: true,
         },
       });
     } else {
@@ -93,14 +93,14 @@ router.post("/anime/character", async (req, res) => {
           id: characterInput.animeId,
         },
         data: {
-          Character: {
+          character: {
             connect: {
               id: characterInput.characterId,
             },
           },
         },
         include: {
-          Character: true,
+          character: true,
         },
       });
     }

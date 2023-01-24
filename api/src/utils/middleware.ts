@@ -9,7 +9,7 @@ export interface isAuthenticatedRequest extends Request{
 
 const isAuthenticatedScheme = z.object({
     sessionId: z.string(),
-  });
+});
   
 export const isAuthenticated = async (
     req: isAuthenticatedRequest,
