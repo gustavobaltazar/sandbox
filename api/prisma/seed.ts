@@ -1,6 +1,11 @@
 import { prisma } from "../src/utils/prisma";
 
 async function seed() {
+    await prisma.session.deleteMany();
+    await prisma.user.deleteMany();
+    await prisma.character.deleteMany();
+    await prisma.anime.deleteMany();
+
     await prisma.user.create({
         data: {
             name: "Celso",
@@ -26,6 +31,7 @@ async function seed() {
             score: 7.5,
             season: "Fall",
             year: "2002",
+            synopsis: "simsismsim"
         }
     })
     
@@ -36,6 +42,7 @@ async function seed() {
             score: 8,
             season: "Spring",
             year: "2004",
+            synopsis: "simsismsim"
         }
     })
     
@@ -46,6 +53,7 @@ async function seed() {
             score: 10,
             season: "Fall",
             year: "2022",
+            synopsis: "simsismsim"
         }
     })
 }
