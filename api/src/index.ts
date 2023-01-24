@@ -44,6 +44,19 @@ app.post("/anime", async (req, res) => {
   }
 });
 
+app.get("/anime/rank", async (req, res) => {
+  try {
+    const rankAnimes = await prisma.anime.findMany({
+      orderBy: {
+        score: "desc",
+      }
+    });
+    return res.status(200).json({ rankAnimes });
+  } catch (error) {
+    return res.status(400).json({ message: "Bad request error", error })
+  }
+});
+
 app.post("/anime/character", async (req, res) => {
   function isCreateCharacter(
     characterInput: Zimbas
@@ -235,5 +248,5 @@ app.post(
 );
 
 app.listen(4000, () => {
-  console.log("listening on port 4000");
+  console.log("Server running on port 4000");
 });
