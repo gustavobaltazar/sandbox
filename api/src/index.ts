@@ -44,11 +44,6 @@ app.post("/anime", async (req, res) => {
   }
 });
 
-const animeCharacterScheme = z.object({
-  name: z.string(),
-  animeId: z.string(),
-});
-
 app.post("/anime/character", async (req, res) => {
   function isCreateCharacter(
     characterInput: Zimbas
@@ -96,6 +91,15 @@ app.post("/anime/character", async (req, res) => {
     return res.status(400).json({ message: "Cannot add character!", error });
   }
 });
+
+app.get("/anime/character", async (req, res) => {
+  const allCharacter = await prisma.character.findMany({
+    include: {
+      animes: true
+    }
+  })
+  return res.status(200).json({ allCharacter })
+})
 
 const addAnimeFavoriteScheme = z.object({
   animeId: z.string(),
