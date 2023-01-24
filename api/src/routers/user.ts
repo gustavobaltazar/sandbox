@@ -130,27 +130,25 @@ router.post(
   "/user/score/anime",
   isAuthenticated,
   async (req: isAuthenticatedRequest, res) => {
-    const {animeId, score} = animeScoreScheme.parse(req.body);
-    if (!req.user) {
-      return res.status(500).json({ err: "INTERNAL SERVER ERROR" });
-    }
+    const { animeId, score } = animeScoreScheme.parse(req.body);
 
     try {
       const updatedAnime = await prisma.anime.update({
         where: {
-          id: animeId
+          id: animeId,
         },
         data: {
           scoresByUsers: {
             create: {
               score,
-              userId: req.user.id,
-            }
-          }
-        }
+              userId: req.user!.id,
+            },
+          },
+        },
       });
+      return res.status(200).json({ updatedAnime });
     } catch (error) {
-      
+      return res.status(400).json({ message: "Cannot update anime", error });
     }
   }
 );

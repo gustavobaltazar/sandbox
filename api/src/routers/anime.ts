@@ -50,12 +50,12 @@ router.get("/anime/rank", async (req, res) => {
 const createAnimeCharacterScheme = z.object({
   characterName: z.string(),
   animeId: z.string(),
-})
+});
 
 const addExistingAnimeCharacterScheme = z.object({
   characterId: z.string(),
   animeId: z.string(),
-})
+});
 
 const animeCharacterRouteScheme = createAnimeCharacterScheme.or(
   addExistingAnimeCharacterScheme
@@ -65,10 +65,12 @@ type AnimeCharacterRoute = z.infer<typeof animeCharacterRouteScheme>;
 type CreateCharacter = z.infer<typeof createAnimeCharacterScheme>;
 
 router.post("/anime/character", async (req, res) => {
-  function isCreateCharacter(input: AnimeCharacterRoute): input is CreateCharacter {
+  function isCreateCharacter(
+    input: AnimeCharacterRoute
+  ): input is CreateCharacter {
     return "characterName" in input;
   }
-  const characterInput = addExistingAnimeCharacterScheme.parse(req.body);
+  const characterInput = animeCharacterRouteScheme.parse(req.body);
   try {
     let anime;
     if (isCreateCharacter(characterInput)) {
@@ -119,4 +121,4 @@ router.get("/anime/character", async (req, res) => {
   return res.status(200).json({ allCharacter });
 });
 
-export default { router }
+export default { router };
