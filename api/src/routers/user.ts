@@ -73,7 +73,7 @@ router.delete("/user/session", async (req, res) => {
     });
     return res.status(200).json({ message: "Logout succesfully" });
   } catch (err) {
-    return res.status(500).json({ message: "Something went wrong!" });
+    return res.status(500).json({ message: "Something went wrong" });
   }
 });
 
@@ -88,6 +88,22 @@ router.post(
 const addAnimeFavoriteScheme = z.object({
   animeId: z.string(),
 });
+
+router.get(
+  "/user/anime/scored",
+  isAuthenticated,
+  async (req: isAuthenticatedRequest, res) => {
+    const scoredAnimes = await prisma.animeScore.findMany({
+      where: {
+        userId: req.user!.id        
+      },
+      include: {
+        Anime: true
+      }
+    })
+    return res.status(200).json({ scoredAnimes })
+  }
+)
 
 router.post(
   "/user/favorite/anime",

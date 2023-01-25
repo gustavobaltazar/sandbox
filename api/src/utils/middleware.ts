@@ -35,6 +35,6 @@ export const isAuthenticated = async (
       req.user = user;
       next();
     } catch (error) {
-      return res.status(400).json({ message: "UNATHORIZED" });
+      return res.status(400).json({ message: "UNATHORIZED", error });
     }
   };
