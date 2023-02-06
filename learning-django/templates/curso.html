@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+{% block content %}
+    <!-- ##### Header Area End ##### -->
+
+        <!-- Course Post Search -->
+        <div class="course-post-search mb-80">
+            <div class="container">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <select name="select1" id="select1">
+                                <option value="1">Mecatrônica</option>
+                                <option value="1">Smart Automation</option>
+                                <option value="1">Manufatura Digital</option>
+                                <option value="1">Administração</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-2 text-right">
+                            <button type="submit" class="btn course-btn">Procurar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Course Slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--<div class="course-slider owl-carousel">-->
+                        <img src="{% static 'img/bg-img/ets_banner.jpg' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="course-headline my-5">
+                            <span>03 de Agosto de 2022</span>
+                            <h2>{{ curso.nome_curso_bosch }}</h2>
+                            <div class="course-info">
+                                <h6>{{ curso.nome_curso_senai }}</h6>
+                                <h6>Duração Senai:{{ curso.duracao_senai }}</h6>
+                                <h6>Duração Bosch:{{ curso.duracao_bosch }}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <div class="single-information d-flex">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="maininformacoes">
+                            <h4>Mais Informações</h4>
+                            <div class="maininformacoes">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ingredientes -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+                    <!-- Footer Social Info -->
+                    <div class="footer-social-info text-right">
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Footer Logo -->
+                    <div class="footer-logo">
+                        <a href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+ 
