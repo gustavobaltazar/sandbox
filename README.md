@@ -1,3 +1,3 @@
 # sandbox
 
-## repo containing all the things that i'm seeing/learning
+## repo containing all things that i'm seeing/learning
